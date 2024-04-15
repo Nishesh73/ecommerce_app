@@ -1,7 +1,9 @@
+
 import "package:ecommerceapp/components/my_listtile.dart";
 import "package:flutter/material.dart";
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
+
 
   @override
   Widget build(BuildContext context) {
@@ -15,13 +17,22 @@ class MyDrawer extends StatelessWidget {
           ),),
           //i can see horizental line provided by drawer, a default line
         //drawer body
-        MyListTile(tap: (){},stringData: "Shop", iconData:  Icons.shop),
+
+      
+
+
          MyListTile(tap: (){
           Navigator.pushNamed(context, "/cartpage");
          },stringData: "Cart", iconData:  Icons.shopping_cart),
         //  in column the widget placed from top to bottom , but there is nothing that
         // will automatically push the widget to buttom. thus the spacer is used to 
         // create the space and alignment property will positioned the widget at the bottom
+        MyListTile(tap: (){
+          Navigator.pushNamed(context, "/setting");
+
+
+        },stringData: "Settings", iconData:  Icons.settings),
+   
 
          Spacer(),
              Container(

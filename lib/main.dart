@@ -1,24 +1,36 @@
-import 'dart:js';
 
+
+import 'package:ecommerceapp/models/shop.dart';
 import 'package:ecommerceapp/pages/cart_page.dart';
 import 'package:ecommerceapp/pages/intro_page.dart';
+import 'package:ecommerceapp/pages/setting_page.dart';
 import 'package:ecommerceapp/pages/shop_page.dart';
-import 'package:ecommerceapp/provider/theme.dart';
+import 'package:ecommerceapp/theme.dart';
+
 import 'package:ecommerceapp/utils.dart';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-void main()async {
+void main()async{
 
-  //gettign bool value from sharedprefernce
-  SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-  bool isLight = sharedPreferences.getBool("isLight")??true;//if value is null then light theme
-  runApp(ChangeNotifierProvider<ThemeNotifier>(
-    create: (context)=>ThemeNotifier(isLight: isLight),//it will call ThemeNotifier() construnctor
+ 
+  runApp(
+  MultiProvider(providers: [
+    //when we have multiple provider we use it
+  ChangeNotifierProvider<Shop>(create: (context)=>Shop()),
+    ChangeNotifierProvider<ThemeNotifier>(create: (context)=>ThemeNotifier())
+  
+
+
+
+  ],
+    child: const MyApp())
+  
+  );
     
-    child: const MyApp()));
+  
 }
 
 class MyApp extends StatelessWidget {
@@ -29,11 +41,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: themeData,
+      // theme: themeData,
+      theme: context.watch<ThemeNotifier>().getTheme(),
+    
       routes: {
         "/":(context)=>IntroPagr(),
         "/shoppage":(context)=>ShopPage(),
         "/cartpage": (context)=>CartPage(),
+        "/setting": (context)=>Settings(),
         //"/"--this is route name serve as initial route, or home
         //"/shoppage"--this is also route name
         //context is genearrly used to access the location of widget within

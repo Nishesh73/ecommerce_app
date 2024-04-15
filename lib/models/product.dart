@@ -4,10 +4,10 @@ class Product{
  final String name; 
  //for every object we have only one value thats why final keyword is used
   final int price;
-//  final String imagePath;
+  final String imagePath;
  final String description;
   Product({required this.name, required this.price, 
-  required this.description});
+  required this.description, required this.imagePath});
 
 
 
