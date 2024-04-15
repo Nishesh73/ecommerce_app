@@ -1,4 +1,6 @@
+import 'package:ecommerceapp/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class MyButton extends StatelessWidget {
   Function() tap;
@@ -18,7 +20,7 @@ class MyButton extends StatelessWidget {
           margin: EdgeInsets.only(top: 15),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
-            color: Theme.of(context).colorScheme.secondary),
+            color: context.watch<ThemeNotifier>().darkTheme?Colors.black:Color.fromARGB(255, 193, 163, 163),),
           
           child: Padding(
             padding: const EdgeInsets.all(18.0),

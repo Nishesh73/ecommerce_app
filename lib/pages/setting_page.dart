@@ -8,7 +8,7 @@ class Settings extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Themec change"),
+        title: Text("Theme change"),
         actions: [Switch(value: context.watch<ThemeNotifier>().darkTheme , onChanged: (_){
           context.read<ThemeNotifier>().toogleTheme();
 

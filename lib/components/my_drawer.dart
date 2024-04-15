@@ -1,6 +1,8 @@
 
 import "package:ecommerceapp/components/my_listtile.dart";
+import "package:ecommerceapp/theme.dart";
 import "package:flutter/material.dart";
+import "package:provider/provider.dart";
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
 
@@ -12,7 +14,7 @@ class MyDrawer extends StatelessWidget {
       child: Column(children: [
         //drawer header
         DrawerHeader(child:   Icon(Icons.shopping_bag, size: 60,
-          color: Theme.of(context).colorScheme.inversePrimary,
+          color: context.watch<ThemeNotifier>().darkTheme?Colors.black:const Color.fromARGB(255, 165, 158, 158),
           
           ),),
           //i can see horizental line provided by drawer, a default line
